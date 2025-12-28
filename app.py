@@ -224,8 +224,10 @@ if user_input:
             if isinstance(message, ToolMessage):
                 st.status(f"🔧 Using `{message.name}`", expanded=False)
 
-            if isinstance(message, AIMessage) and isinstance(message.content, str): full_response += message.content
-                st.write(full_response)
+            if isinstance(message, AIMessage):
+                if isinstance(message.content, str):
+        full_response += message.content
+        st.write(full_response)
 
                      
     st.session_state.messages.append(
